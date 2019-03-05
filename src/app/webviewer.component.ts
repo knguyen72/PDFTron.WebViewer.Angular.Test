@@ -22,16 +22,16 @@ export class WebViewerComponent implements AfterViewInit {
     CoreControls.getDefaultBackendType().then((backend: any) => {
       var workerHandler = {};
       var workerTransportPromise = {
-        pdf: CoreControls.initPDFWorkerTransports(backend, workerHandler, licenseKey),
-        office: CoreControls.initOfficeWorkerTransports(backend, workerHandler, licenseKey)
+        pdf: CoreControls.initPDFWorkerTransports(backend, workerHandler, atob(licenseKey)),
+        office: CoreControls.initOfficeWorkerTransports(backend, workerHandler, atob(licenseKey))
       };
 
       this.myWebViewer = new PDFTron.WebViewer({
         path: '../lib',
-        l: licenseKey,
+        l: atob(licenseKey),
         initialDoc: '../files/test-empty.docx',
         workerTransportPromise: workerTransportPromise,
-        preloadPDFWorker: false,
+        preloadPDFWorker: false
       }, this.viewer.nativeElement);
     });
   }
