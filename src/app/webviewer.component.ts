@@ -19,7 +19,7 @@ export class WebViewerComponent implements AfterViewInit {
 
     CoreControls.setWorkerPath('/lib/core');
 
-    CoreControls.getDefaultBackendType().then((backend, ) => {
+    CoreControls.getDefaultBackendType().then((backend) => {
       const workerHandler = {};
       const workerTransportPromise = {
         pdf: CoreControls.initPDFWorkerTransports(backend, workerHandler, licenseKey),
