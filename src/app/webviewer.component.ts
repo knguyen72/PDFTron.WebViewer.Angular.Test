@@ -17,15 +17,14 @@ export class WebViewerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    CoreControls.setWorkerPath('../lib/core');
+    CoreControls.setWorkerPath('/lib/core');
 
     CoreControls.getDefaultBackendType().then((backend, ) => {
-      var workerHandler = {};
-      
-      var workerTransportPromise = {
+      const workerHandler = {};
+      const workerTransportPromise = {
         pdf: CoreControls.initPDFWorkerTransports(backend, workerHandler, licenseKey),
         office: CoreControls.initOfficeWorkerTransports(backend, workerHandler, licenseKey)
-      }
+      };
 
       this.myWebViewer = new PDFTron.WebViewer({
         path: '../lib',
