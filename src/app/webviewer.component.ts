@@ -17,7 +17,7 @@ export class WebViewerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    CoreControls.setWorkerPath('/lib/core');
+    CoreControls.setWorkerPath('../lib/core');
 
     CoreControls.getDefaultBackendType().then((backend: any) => {
       var workerHandler = {};
